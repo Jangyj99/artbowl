@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 
 from accountapp.models import HelloWorld
 
@@ -33,3 +33,9 @@ class AccountCreateView(CreateView):
     #success_url이란 이 계정을 만들기 성공하면 어느 경로로 재 연결
     template_name = 'accountapp/create.html'
     #회원 가입을 할 떄 볼 html. form. 어떤 html파일?
+
+
+class AccountDetailView(DetailView):
+    model = User
+    context_object_name = "target_user"
+    template_name = 'accountapp/detail.html'
